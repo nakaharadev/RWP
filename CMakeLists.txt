@@ -28,10 +28,6 @@ set(ALL_FILES
 	${SRC_FILES}
 )
 
-add_executable(${LIB_NAME} ${ALL_FILES} main.cpp)
-
-if(MSVC)
-    target_compile_options(${LIB_NAME} PRIVATE /std:c++20)
-else()
-    target_compile_options(${LIB_NAME} PRIVATE -std=c++20)
-endif()
+add_library(${LIB_NAME} ${ALL_FILES})
+target_include_directories(${LIB_NAME} PRIVATE ${PUBLIC_INCLUDE_DIR})
+target_include_directories(${LIB_NAME} PUBLIC ${PUBLIC_INCLUDE_DIR})
